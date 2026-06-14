@@ -1,6 +1,6 @@
 import { X, ChevronRight, ChevronLeft } from "lucide-react";
 import { useCartStore } from "@/store/useCartStore";
-import { useOrderStore } from "@/stores/useOrderStore";
+import { useOrderStore } from "@/store/useOrderStore";
 import { formatPrice } from "@/utils/helpers";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -119,8 +119,7 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
       />
       
       <div 
-        className={`fixed bottom-0 left-0 right-0 z-[101] bg-[#F2F3F2] rounded-t-[30px] transition-transform duration-300 ease-in-out lg:left-1/2 lg:w-full lg:max-w-md lg:-translate-x-1/2 ${isOpen && !isClosing ? "translate-y-0" : "translate-y-full"} overflow-hidden flex flex-col`}
-        style={{ maxHeight: '90vh' }}
+        className={`fixed bottom-0 left-0 right-0 z-[101] bg-[#F2F3F2] rounded-t-[30px] transition-transform duration-300 ease-in-out lg:left-1/2 lg:w-full lg:max-w-md lg:-translate-x-1/2 ${isOpen && !isClosing ? "translate-y-0" : "translate-y-full"} overflow-hidden flex flex-col max-h-[90vh]`}
       >
         {activeSheet === "main" && (
           <>

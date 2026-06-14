@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Package, Clock, ChevronRight } from "lucide-react";
-import { useOrderStore, OrderStatus } from "@/stores/useOrderStore";
+import { useOrderStore, OrderStatus } from "@/store/useOrderStore";
 import { formatPrice } from "@/utils/helpers";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { OrderSkeleton } from "@/components/shared/Skeletons";

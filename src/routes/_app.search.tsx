@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Search as SearchIcon, SlidersHorizontal, X, Clock, TrendingUp } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useProductStore } from "@/store/useProductStore";
-import { useSearchStore } from "@/stores/useSearchStore";
+import { useSearchStore } from "@/store/useSearchStore";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SearchSkeleton } from "@/components/shared/Skeletons";
 import { EmptyState } from "@/components/shared/EmptyState";

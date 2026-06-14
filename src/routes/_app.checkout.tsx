@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/useCartStore";
-import { useOrderStore, type Address } from "@/stores/useOrderStore";
+import { useOrderStore, type Address } from "@/store/useOrderStore";
 import { formatPrice } from "@/utils/helpers";
 import { MapPin, CreditCard, Clock, Tag, ChevronRight, CheckCircle2, XCircle } from "lucide-react";
 import { CheckoutSkeleton } from "@/components/shared/Skeletons";

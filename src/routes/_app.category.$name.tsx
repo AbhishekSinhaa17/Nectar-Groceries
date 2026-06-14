@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, SlidersHorizontal, X, Search, Star, ChevronDown } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useProductStore } from "@/store/useProductStore";
-import { useFilterStore, SortOption } from "@/stores/useFilterStore";
+import { useFilterStore, SortOption } from "@/store/useFilterStore";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { ProductCardSkeleton } from "@/components/shared/Skeletons";
 import { EmptyState } from "@/components/shared/EmptyState";
@@ -209,47 +209,47 @@ function CategoryListing() {
       </div>
 
       {showFilter && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 72, zIndex: 999, background: '#fff' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', padding: '16px 20px', borderBottom: '1px solid #E2E2E2' }}>
-            <button onClick={() => setShowFilter(false)} style={{ position: 'absolute', left: 20, background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
+        <div className="fixed inset-0 bottom-[72px] z-[999] bg-white">
+          <div className="flex items-center justify-center relative px-5 py-4 border-b border-[#E2E2E2]">
+            <button onClick={() => setShowFilter(false)} className="absolute left-5 bg-transparent border-none cursor-pointer p-1">
               <X className="h-5 w-5 text-[#181725]" />
             </button>
-            <span style={{ fontSize: 18, fontWeight: 700, color: '#181725' }}>Filters</span>
+            <span className="text-lg font-bold text-[#181725]">Filters</span>
           </div>
 
-                    <div style={{ background: '#F2F3F2', borderRadius: '20px 20px 0 0', flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                        <div style={{ flex: 1, overflowY: 'auto', padding: '24px 24px 24px 24px' }}>
-                            <div style={{ fontSize: 18, fontWeight: 600, color: '#181725', marginBottom: 16 }}>Categories</div>
+          <div className="bg-[#F2F3F2] rounded-t-[20px] flex-1 flex flex-col overflow-hidden">
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="text-lg font-semibold text-[#181725] mb-4">Categories</div>
               {CATEGORIES.map((c) => {
                 const active = selectedCategories.includes(c.name);
                 return (
-                  <div key={c.name} onClick={() => toggleCategory(c.name)} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14, cursor: 'pointer' }}>
-                    <div style={{ width: 22, height: 22, borderRadius: 6, border: active ? '2px solid #53B175' : '2px solid #B1B1B1', background: active ? '#53B175' : '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div key={c.name} onClick={() => toggleCategory(c.name)} className="flex items-center gap-2.5 mb-3.5 cursor-pointer">
+                    <div className={`w-[22px] h-[22px] rounded-md border-2 flex items-center justify-center shrink-0 ${active ? "border-[#53B175] bg-[#53B175]" : "border-[#B1B1B1] bg-white"}`}>
                       {active && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4L19 7" /></svg>}
                     </div>
-                    <span style={{ fontSize: 15, fontWeight: 500, color: active ? '#53B175' : '#181725' }}>{c.name}</span>
+                    <span className={`text-[15px] font-medium ${active ? "text-[#53B175]" : "text-[#181725]"}`}>{c.name}</span>
                   </div>
                 );
               })}
 
-                            <div style={{ fontSize: 18, fontWeight: 600, color: '#181725', marginBottom: 16, marginTop: 24 }}>Brand</div>
+              <div className="text-lg font-semibold text-[#181725] mb-4 mt-6">Brand</div>
               {FILTER_BRANDS.map((b) => {
                 const active = selectedBrands.includes(b);
                 return (
-                  <div key={b} onClick={() => toggleBrand(b)} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14, cursor: 'pointer' }}>
-                    <div style={{ width: 22, height: 22, borderRadius: 6, border: active ? '2px solid #53B175' : '2px solid #B1B1B1', background: active ? '#53B175' : '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div key={b} onClick={() => toggleBrand(b)} className="flex items-center gap-2.5 mb-3.5 cursor-pointer">
+                    <div className={`w-[22px] h-[22px] rounded-md border-2 flex items-center justify-center shrink-0 ${active ? "border-[#53B175] bg-[#53B175]" : "border-[#B1B1B1] bg-white"}`}>
                       {active && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 13l4 4L19 7" /></svg>}
                     </div>
-                    <span style={{ fontSize: 15, fontWeight: 500, color: active ? '#53B175' : '#181725' }}>{b}</span>
+                    <span className={`text-[15px] font-medium ${active ? "text-[#53B175]" : "text-[#181725]"}`}>{b}</span>
                   </div>
                 );
               })}
             </div>
 
-                        <div style={{ padding: '16px 24px 32px 24px', flexShrink: 0 }}>
+            <div className="px-6 py-4 pb-8 shrink-0">
               <button
                 onClick={() => setShowFilter(false)}
-                style={{ display: 'block', width: '100%', height: 56, borderRadius: 19, backgroundColor: '#53B175', color: '#fff', fontSize: 17, fontWeight: 600, border: 'none', cursor: 'pointer' }}
+                className="block w-full h-14 rounded-[19px] bg-[#53B175] text-white text-[17px] font-semibold border-none cursor-pointer"
               >
                 Apply Filter
               </button>

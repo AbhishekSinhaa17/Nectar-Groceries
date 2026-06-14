@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { X } from "lucide-react";
-import { useOrderStore } from "@/stores/useOrderStore";
+import { useOrderStore } from "@/store/useOrderStore";
 import { useCartStore } from "@/store/useCartStore";
 
 export const Route = createFileRoute("/order-failed")({

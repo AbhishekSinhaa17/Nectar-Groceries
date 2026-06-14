@@ -10,7 +10,7 @@ import { CategoryCard } from "@/components/shared/CategoryCard";
 import { CATEGORIES } from "@/data/mockData";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useDelayedLoading } from "@/hooks/useDelayedLoading";
-import { useRecentlyViewedStore } from "@/stores/useRecentlyViewedStore";
+import { useRecentlyViewedStore } from "@/store/useRecentlyViewedStore";
 import { ErrorState } from "@/components/shared/ErrorState";
 import { motion, AnimatePresence } from "framer-motion";
 import { slugify } from "@/utils/helpers";

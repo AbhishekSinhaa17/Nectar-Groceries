@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Check } from "lucide-react";
-import { useOrderStore } from "@/stores/useOrderStore";
+import { useOrderStore } from "@/store/useOrderStore";
 import { useEffect } from "react";
 
 export const Route = createFileRoute("/order-accepted")({

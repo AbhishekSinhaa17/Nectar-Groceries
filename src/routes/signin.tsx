@@ -20,11 +20,7 @@ function SignIn() {
         <img
           src="/images/signin_top.png"
           alt="Groceries"
-          className="h-full w-full object-cover"
-          style={{ 
-            maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)', 
-            WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' 
-          }}
+          className="h-full w-full object-cover [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
         />
       </div>
 

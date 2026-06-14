@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useProductStore } from "@/store/useProductStore";
 import { useCartStore } from "@/store/useCartStore";
 import { useFavouritesStore } from "@/store/useFavouritesStore";
-import { useRecentlyViewedStore } from "@/stores/useRecentlyViewedStore";
+import { useRecentlyViewedStore } from "@/store/useRecentlyViewedStore";
 import { formatPrice } from "@/utils/helpers";
 import { PRODUCTS } from "@/data/mockData";
 import { ProductCard } from "@/components/shared/ProductCard";
