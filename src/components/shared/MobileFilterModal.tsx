@@ -11,12 +11,7 @@ interface MobileFilterModalProps {
 const FILTER_BRANDS = BRANDS;
 
 export function MobileFilterModal({ isOpen, onClose }: MobileFilterModalProps) {
-  const {
-    selectedCategories,
-    selectedBrands,
-    toggleCategory,
-    toggleBrand,
-  } = useFilterStore();
+  const { selectedCategories, selectedBrands, toggleCategory, toggleBrand } = useFilterStore();
 
   if (!isOpen) return null;
 

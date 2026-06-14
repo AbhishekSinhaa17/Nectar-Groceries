@@ -36,7 +36,9 @@ export function ProductCard({ product }: Props) {
         />
       </div>
       <div className="mt-3 flex-1">
-        <h3 className="line-clamp-2 text-base font-bold text-[#181725] tracking-tight">{product.name}</h3>
+        <h3 className="line-clamp-2 text-base font-bold text-[#181725] tracking-tight">
+          {product.name}
+        </h3>
         <p className="mt-1 text-sm text-[#7C7C7C]">{product.weight}, Price</p>
       </div>
       <div className="mt-auto pt-4 flex items-center justify-between">

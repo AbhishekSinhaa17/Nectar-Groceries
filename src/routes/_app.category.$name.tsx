@@ -56,12 +56,12 @@ function CategoryListing() {
 
   const filtered = useMemo(() => {
     const result = products.filter((p) => {
-
       const activeCats =
         selectedCategories.length > 0 ? selectedCategories : baseCategory ? [baseCategory] : [];
       if (activeCats.length > 0 && !activeCats.includes(p.category)) return false;
 
-      if (selectedBrands.length > 0 && (!p.brand || !selectedBrands.includes(p.brand))) return false;
+      if (selectedBrands.length > 0 && (!p.brand || !selectedBrands.includes(p.brand)))
+        return false;
 
       if (p.price < minPrice || p.price > maxPrice) return false;
 
@@ -123,7 +123,15 @@ function CategoryListing() {
       chips.push({ label: "In Stock", onRemove: () => removeFilter("stock") });
     }
     return chips;
-  }, [selectedCategories, selectedBrands, minPrice, maxPrice, minRating, inStockOnly, removeFilter]);
+  }, [
+    selectedCategories,
+    selectedBrands,
+    minPrice,
+    maxPrice,
+    minRating,
+    inStockOnly,
+    removeFilter,
+  ]);
 
   return (
     <>
@@ -150,7 +158,9 @@ function CategoryListing() {
             >
               <ArrowLeft className="h-6 w-6 text-[#181725]" />
             </button>
-            <h1 className="text-xl font-bold text-[#181725] capitalize text-center">{unslugify(name)}</h1>
+            <h1 className="text-xl font-bold text-[#181725] capitalize text-center">
+              {unslugify(name)}
+            </h1>
             <button
               onClick={() => setShowFilter(true)}
               aria-label="Filters"
@@ -264,10 +274,7 @@ function FilterPanel({
                   selectedBrands.includes(b) ? "text-[#53B175]" : "text-[#181725]"
                 }`}
               >
-                <Checkbox
-                  checked={selectedBrands.includes(b)}
-                  onChange={() => toggleBrand(b)}
-                />
+                <Checkbox checked={selectedBrands.includes(b)} onChange={() => toggleBrand(b)} />
                 {b}
               </label>
             </li>

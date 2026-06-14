@@ -168,8 +168,26 @@ export const PRODUCTS: Product[] = [
     "Kazi Farmas",
   ),
   make("p10", "Fresh Fish", 7.99, "1kg", "1kg", ProductCategory.MEAT_FISH, IMG.fish, "Kazi Farmas"),
-  make("p11", "Egg Chicken Red", 1.99, "4pcs", "180g", ProductCategory.DAIRY, IMG.egg_red, "Cocola"),
-  make("p12", "Egg Chicken White", 1.5, "180g", "180g", ProductCategory.DAIRY, IMG.egg_white, "Cocola"),
+  make(
+    "p11",
+    "Egg Chicken Red",
+    1.99,
+    "4pcs",
+    "180g",
+    ProductCategory.DAIRY,
+    IMG.egg_red,
+    "Cocola",
+  ),
+  make(
+    "p12",
+    "Egg Chicken White",
+    1.5,
+    "180g",
+    "180g",
+    ProductCategory.DAIRY,
+    IMG.egg_white,
+    "Cocola",
+  ),
   make(
     "p13",
     "Fresh Milk",
@@ -225,7 +243,16 @@ export const PRODUCTS: Product[] = [
     "Individual Collection",
   ),
   make("p22", "Egg Pasta", 15.99, "30gm", "30gm", ProductCategory.NOODLES, IMG.egg_pasta, "Cocola"),
-  make("p23", "Egg Noodles", 15.99, "2L", "2L", ProductCategory.NOODLES, IMG.egg_noodles_red, "Cocola"),
+  make(
+    "p23",
+    "Egg Noodles",
+    15.99,
+    "2L",
+    "2L",
+    ProductCategory.NOODLES,
+    IMG.egg_noodles_red,
+    "Cocola",
+  ),
   make(
     "p24",
     "Instant Ramen",
@@ -289,8 +316,26 @@ export const PRODUCTS: Product[] = [
   make("p30", "Potato Chips", 1.99, "Bag", "150g", ProductCategory.CHIPS, IMG.chips, "Cocola"),
   make("p31", "Tortilla Chips", 2.49, "Bag", "200g", ProductCategory.CHIPS, IMG.chips, "Cocola"),
   make("p32", "Salt Crisps", 1.5, "Bag", "120g", ProductCategory.CHIPS, IMG.chips, "Cocola"),
-  make("p33", "Basmati Rice", 9.99, "Bag", "5kg", ProductCategory.RICE, IMG.basmatiRice, "Kazi Farmas"),
-  make("p34", "Jasmine Rice", 8.49, "Bag", "5kg", ProductCategory.RICE, IMG.jasmineRice, "Kazi Farmas"),
+  make(
+    "p33",
+    "Basmati Rice",
+    9.99,
+    "Bag",
+    "5kg",
+    ProductCategory.RICE,
+    IMG.basmatiRice,
+    "Kazi Farmas",
+  ),
+  make(
+    "p34",
+    "Jasmine Rice",
+    8.49,
+    "Bag",
+    "5kg",
+    ProductCategory.RICE,
+    IMG.jasmineRice,
+    "Kazi Farmas",
+  ),
   make(
     "p35",
     "Red Lentils",
@@ -311,7 +356,16 @@ export const PRODUCTS: Product[] = [
     IMG.yellowSplitPeas,
     "Kazi Farmas",
   ),
-  make("p37", "Chickpeas", 4.25, "Pack", "1kg", ProductCategory.PULSES, IMG.chickpeas, "Kazi Farmas"),
+  make(
+    "p37",
+    "Chickpeas",
+    4.25,
+    "Pack",
+    "1kg",
+    ProductCategory.PULSES,
+    IMG.chickpeas,
+    "Kazi Farmas",
+  ),
   make(
     "p38",
     "Cheese Burger Kit",
@@ -360,7 +414,7 @@ export const PRODUCTS: Product[] = [
     "1kg",
     ProductCategory.NOODLES,
     IMG.egg_noodles_yellow,
-    "Cocola"
+    "Cocola",
   ),
 ];
 
@@ -372,14 +426,54 @@ export interface CategoryInfo {
 }
 
 export const CATEGORIES: CategoryInfo[] = [
-  { name: ProductCategory.FRESH_FRUITS, image: "/images/mock/cat_fruits2.png", bg: "bg-[rgba(83,177,117,0.1)]", border: "border-[rgba(83,177,117,0.7)]" },
-  { name: ProductCategory.COOKING_OIL, image: "/images/mock/cat_oil2.png", bg: "bg-[rgba(248,164,76,0.1)]", border: "border-[rgba(248,164,76,0.7)]" },
-  { name: ProductCategory.MEAT_FISH, image: "/images/mock/cat_meat.png", bg: "bg-[rgba(247,165,147,0.1)]", border: "border-[rgba(247,165,147,0.7)]" },
-  { name: ProductCategory.BAKERY, image: "/images/mock/cat_bakery.png", bg: "bg-[rgba(211,176,224,0.1)]", border: "border-[rgba(211,176,224,0.7)]" },
-  { name: ProductCategory.DAIRY, image: "/images/mock/cat_dairy2.png", bg: "bg-[rgba(253,229,152,0.1)]", border: "border-[rgba(253,229,152,0.7)]" },
-  { name: ProductCategory.BEVERAGES, image: "/images/mock/cat_bev2.png", bg: "bg-[rgba(183,223,245,0.1)]", border: "border-[rgba(183,223,245,0.7)]" },
-  { name: ProductCategory.PULSES, image: "/images/mock/cat_pulses.png", bg: "bg-[rgba(83,177,117,0.1)]", border: "border-[rgba(83,177,117,0.7)]" },
-  { name: ProductCategory.RICE, image: "/images/mock/cat_rice.png", bg: "bg-[rgba(248,164,76,0.1)]", border: "border-[rgba(248,164,76,0.7)]" },
+  {
+    name: ProductCategory.FRESH_FRUITS,
+    image: "/images/mock/cat_fruits2.png",
+    bg: "bg-[rgba(83,177,117,0.1)]",
+    border: "border-[rgba(83,177,117,0.7)]",
+  },
+  {
+    name: ProductCategory.COOKING_OIL,
+    image: "/images/mock/cat_oil2.png",
+    bg: "bg-[rgba(248,164,76,0.1)]",
+    border: "border-[rgba(248,164,76,0.7)]",
+  },
+  {
+    name: ProductCategory.MEAT_FISH,
+    image: "/images/mock/cat_meat.png",
+    bg: "bg-[rgba(247,165,147,0.1)]",
+    border: "border-[rgba(247,165,147,0.7)]",
+  },
+  {
+    name: ProductCategory.BAKERY,
+    image: "/images/mock/cat_bakery.png",
+    bg: "bg-[rgba(211,176,224,0.1)]",
+    border: "border-[rgba(211,176,224,0.7)]",
+  },
+  {
+    name: ProductCategory.DAIRY,
+    image: "/images/mock/cat_dairy2.png",
+    bg: "bg-[rgba(253,229,152,0.1)]",
+    border: "border-[rgba(253,229,152,0.7)]",
+  },
+  {
+    name: ProductCategory.BEVERAGES,
+    image: "/images/mock/cat_bev2.png",
+    bg: "bg-[rgba(183,223,245,0.1)]",
+    border: "border-[rgba(183,223,245,0.7)]",
+  },
+  {
+    name: ProductCategory.PULSES,
+    image: "/images/mock/cat_pulses.png",
+    bg: "bg-[rgba(83,177,117,0.1)]",
+    border: "border-[rgba(83,177,117,0.7)]",
+  },
+  {
+    name: ProductCategory.RICE,
+    image: "/images/mock/cat_rice.png",
+    bg: "bg-[rgba(248,164,76,0.1)]",
+    border: "border-[rgba(248,164,76,0.7)]",
+  },
 ];
 
 export const BRANDS = ["Individual Collection", "Cocola", "Kazi Farmas"];

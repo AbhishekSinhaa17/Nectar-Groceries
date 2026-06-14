@@ -14,7 +14,7 @@ export function CategoryCard({ category, variant = "vertical" }: Props) {
     <Link
       to="/category/$name"
       params={{ name: slugify(category.name) }}
-      className={`flex ${isHorizontal ? "flex-row gap-4 px-6 py-4" : "flex-col justify-center h-[180px] p-4"} items-center rounded-2xl border ${category.border || 'border-[#E2E2E2]'} transition active:scale-95 ${category.bg}`}
+      className={`flex ${isHorizontal ? "flex-row gap-4 px-6 py-4" : "flex-col justify-center h-[180px] p-4"} items-center rounded-2xl border ${category.border || "border-[#E2E2E2]"} transition active:scale-95 ${category.bg}`}
     >
       <img
         src={category.image}

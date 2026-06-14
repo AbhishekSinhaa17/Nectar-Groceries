@@ -45,23 +45,47 @@ const BANNERS = [
     textColor: "text-[#181725]",
     subColor: "text-[#E6A000]",
     images: [
-      { src: "/images/mock/milk.png", className: "absolute -left-6 lg:left-4 bottom-0 h-[120%] lg:h-[100%] object-contain drop-shadow-2xl" },
-      { src: "/images/mock/egg.png", className: "absolute left-24 lg:left-64 -top-4 h-[40%] lg:h-[45%] object-contain opacity-90 drop-shadow-xl" },
-      { src: "/images/mock/cheese.png", className: "absolute -right-4 lg:right-4 bottom-0 h-[80%] lg:h-[85%] object-contain drop-shadow-2xl" }
-    ]
+      {
+        src: "/images/mock/milk.png",
+        className:
+          "absolute -left-6 lg:left-4 bottom-0 h-[120%] lg:h-[100%] object-contain drop-shadow-2xl",
+      },
+      {
+        src: "/images/mock/egg.png",
+        className:
+          "absolute left-24 lg:left-64 -top-4 h-[40%] lg:h-[45%] object-contain opacity-90 drop-shadow-xl",
+      },
+      {
+        src: "/images/mock/cheese.png",
+        className:
+          "absolute -right-4 lg:right-4 bottom-0 h-[80%] lg:h-[85%] object-contain drop-shadow-2xl",
+      },
+    ],
   },
-  { 
-    title: "Beverages", 
-    sub: "Chill, sip, repeat", 
-    from: "from-[#F2F8FF]", 
+  {
+    title: "Beverages",
+    sub: "Chill, sip, repeat",
+    from: "from-[#F2F8FF]",
     to: "to-[#D9EBFF]",
     textColor: "text-[#181725]",
     subColor: "text-[#0066CC]",
     images: [
-      { src: "/images/mock/drinks.png", className: "absolute -left-4 lg:left-8 bottom-0 h-[110%] lg:h-[100%] object-contain drop-shadow-2xl" },
-      { src: "/images/mock/coke.png", className: "absolute right-12 lg:right-64 -top-8 h-[60%] lg:h-[55%] object-contain opacity-90 drop-shadow-xl rotate-12" },
-      { src: "/images/mock/sprite.png", className: "absolute -right-8 lg:-right-2 -bottom-4 h-[70%] lg:h-[80%] object-contain drop-shadow-2xl -rotate-12" }
-    ]
+      {
+        src: "/images/mock/drinks.png",
+        className:
+          "absolute -left-4 lg:left-8 bottom-0 h-[110%] lg:h-[100%] object-contain drop-shadow-2xl",
+      },
+      {
+        src: "/images/mock/coke.png",
+        className:
+          "absolute right-12 lg:right-64 -top-8 h-[60%] lg:h-[55%] object-contain opacity-90 drop-shadow-xl rotate-12",
+      },
+      {
+        src: "/images/mock/sprite.png",
+        className:
+          "absolute -right-8 lg:-right-2 -bottom-4 h-[70%] lg:h-[80%] object-contain drop-shadow-2xl -rotate-12",
+      },
+    ],
   },
 ];
 
@@ -95,9 +119,9 @@ function Home() {
   const grocery = useMemo(() => {
     const beef = products.find((p) => p.name === "Beef Bone");
     const chicken = products.find((p) => p.name === "Broiler Chicken");
-    const baseGrocery = products.slice(12, 22).filter(
-      (p) => p.name !== "Beef Bone" && p.name !== "Broiler Chicken"
-    );
+    const baseGrocery = products
+      .slice(12, 22)
+      .filter((p) => p.name !== "Beef Bone" && p.name !== "Broiler Chicken");
     return [beef, chicken, ...baseGrocery].filter(Boolean) as typeof products;
   }, [products]);
 
@@ -189,13 +213,9 @@ function Home() {
             </div>
             <h2 className="text-xl font-bold text-[#181725]">No products found</h2>
             <p className="mt-2 text-[#7C7C7C]">We couldn't find any products in our store.</p>
-                      </motion.div>
+          </motion.div>
         ) : (
-          <motion.div
-            key="home-content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+          <motion.div key="home-content" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className="lg:flex lg:gap-8 lg:items-start">
               <aside className="hidden lg:block lg:w-72 lg:shrink-0 sticky top-24">
                 <h2 className="text-xl font-bold text-[#181725] mb-6">Explore Categories</h2>
@@ -227,29 +247,35 @@ function Home() {
               <div className="flex-1 min-w-0">
                 <div
                   className={`relative overflow-hidden w-full rounded-2xl ${
-                    BANNERS[banner].fullImage 
-                      ? "bg-[#F2F3F2]" 
+                    BANNERS[banner].fullImage
+                      ? "bg-[#F2F3F2]"
                       : `bg-gradient-to-r ${BANNERS[banner].from} ${BANNERS[banner].to} p-6 lg:p-16 flex items-center justify-center`
                   } min-h-[160px] lg:h-[400px] transition-all duration-500`}
                 >
                   {BANNERS[banner].fullImage ? (
-                    <img src={BANNERS[banner].fullImage} alt={BANNERS[banner].title} className="absolute inset-0 w-full h-full object-cover" />
+                    <img
+                      src={BANNERS[banner].fullImage}
+                      alt={BANNERS[banner].title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                   ) : (
                     <>
                       <div className="relative z-10 flex flex-col items-center justify-center text-center">
-                        <h2 className={`text-2xl lg:text-5xl font-bold ${BANNERS[banner].textColor || 'text-white'}`}>{BANNERS[banner].title}</h2>
-                        <p className={`mt-1 lg:mt-4 text-xs lg:text-lg font-medium ${BANNERS[banner].subColor || 'text-white opacity-90'}`}>
+                        <h2
+                          className={`text-2xl lg:text-5xl font-bold ${BANNERS[banner].textColor || "text-white"}`}
+                        >
+                          {BANNERS[banner].title}
+                        </h2>
+                        <p
+                          className={`mt-1 lg:mt-4 text-xs lg:text-lg font-medium ${BANNERS[banner].subColor || "text-white opacity-90"}`}
+                        >
                           {BANNERS[banner].sub}
                         </p>
                       </div>
-                      {BANNERS[banner].images && BANNERS[banner].images.map((img, idx) => (
-                        <img 
-                          key={idx}
-                          src={img.src} 
-                          alt="" 
-                          className={img.className}
-                        />
-                      ))}
+                      {BANNERS[banner].images &&
+                        BANNERS[banner].images.map((img, idx) => (
+                          <img key={idx} src={img.src} alt="" className={img.className} />
+                        ))}
                     </>
                   )}
                 </div>
@@ -288,7 +314,6 @@ function Home() {
                 </div>
 
                 <div className="mt-6 lg:mt-8">
-
                   <div className="flex gap-4 overflow-x-auto pb-4 pt-2 hide-scrollbar lg:grid lg:grid-cols-4 xl:grid-cols-5 lg:overflow-visible lg:pb-0">
                     {isLoading
                       ? Array.from({ length: 10 }).map((_, i) => (

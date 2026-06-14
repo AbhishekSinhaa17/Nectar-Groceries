@@ -28,8 +28,16 @@ type ActiveSheet = "main" | "delivery" | "payment" | "promo";
 export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProps) {
   const navigate = useNavigate();
   const { items, totalPrice, clearCart } = useCartStore();
-  const { createOrder, placeOrder, completeOrder, failOrder, loading, addresses, defaultAddressId } = useOrderStore();
-  
+  const {
+    createOrder,
+    placeOrder,
+    completeOrder,
+    failOrder,
+    loading,
+    addresses,
+    defaultAddressId,
+  } = useOrderStore();
+
   const [isClosing, setIsClosing] = useState(false);
   const [activeSheet, setActiveSheet] = useState<ActiveSheet>("main");
 
@@ -58,8 +66,8 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
     }, 300);
   };
 
-  const selectedDelivery = DELIVERY_METHODS.find(d => d.id === deliveryMethod)!;
-  const selectedPayment = PAYMENT_METHODS.find(p => p.id === paymentMethod)!;
+  const selectedDelivery = DELIVERY_METHODS.find((d) => d.id === deliveryMethod)!;
+  const selectedPayment = PAYMENT_METHODS.find((p) => p.id === paymentMethod)!;
 
   const handlePlaceOrder = () => {
     if (items.length === 0) return;
@@ -67,7 +75,7 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
     const subtotal = totalPrice();
     const deliveryFee = selectedDelivery.price;
     const tax = subtotal * 0.05;
-    const discount = appliedPromo ? subtotal * 0.1 : 0; // Fake 10% discount
+    const discount = appliedPromo ? subtotal * 0.1 : 0;
     const total = subtotal + deliveryFee + tax - discount;
     const selectedAddress = addresses.find((a) => a.id === defaultAddressId);
 
@@ -78,7 +86,13 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
       tax,
       discount,
       total,
-      address: selectedAddress || { id: "dummy", name: "Guest", street: "123 Main St", city: "City", zip: "12345" },
+      address: selectedAddress || {
+        id: "dummy",
+        name: "Guest",
+        street: "123 Main St",
+        city: "City",
+        zip: "12345",
+      },
       paymentMethod: selectedPayment.name,
       deliveryMethod: selectedDelivery.name,
       estimatedDeliveryTime: selectedDelivery.time,
@@ -109,16 +123,17 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
   if (!isOpen && !isClosing) return null;
 
   const subtotal = totalPrice();
-  const currentTotal = subtotal + selectedDelivery.price + (subtotal * 0.05) - (appliedPromo ? subtotal * 0.1 : 0);
+  const currentTotal =
+    subtotal + selectedDelivery.price + subtotal * 0.05 - (appliedPromo ? subtotal * 0.1 : 0);
 
   return (
     <>
-      <div 
+      <div
         className={`fixed inset-0 z-[100] bg-black/40 transition-opacity duration-300 ${isOpen && !isClosing ? "opacity-100" : "opacity-0"}`}
         onClick={handleClose}
       />
-      
-      <div 
+
+      <div
         className={`fixed bottom-0 left-0 right-0 z-[101] bg-[#F2F3F2] rounded-t-[30px] transition-transform duration-300 ease-in-out lg:left-1/2 lg:w-full lg:max-w-md lg:-translate-x-1/2 ${isOpen && !isClosing ? "translate-y-0" : "translate-y-full"} overflow-hidden flex flex-col max-h-[90vh]`}
       >
         {activeSheet === "main" && (
@@ -131,7 +146,7 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
             </div>
 
             <div className="px-6 py-2 overflow-y-auto">
-              <button 
+              <button
                 onClick={() => setActiveSheet("delivery")}
                 className="w-full flex items-center justify-between py-5 border-b border-[#E2E2E2]/80 transition active:scale-95"
               >
@@ -142,28 +157,34 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
                 </div>
               </button>
 
-              <button 
+              <button
                 onClick={() => setActiveSheet("payment")}
                 className="w-full flex items-center justify-between py-5 border-b border-[#E2E2E2]/80 transition active:scale-95"
               >
                 <span className="text-[#7C7C7C] font-semibold text-lg">Payment</span>
                 <div className="flex items-center gap-4">
                   {paymentMethod === "credit_card" ? (
-                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Card" className="h-4 object-contain" />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                      alt="Card"
+                      className="h-4 object-contain"
+                    />
                   ) : (
-                     <span className="text-[#181725] font-semibold">{selectedPayment.name}</span>
+                    <span className="text-[#181725] font-semibold">{selectedPayment.name}</span>
                   )}
                   <ChevronRight className="h-5 w-5 text-[#181725]" />
                 </div>
               </button>
 
-              <button 
+              <button
                 onClick={() => setActiveSheet("promo")}
                 className="w-full flex items-center justify-between py-5 border-b border-[#E2E2E2]/80 transition active:scale-95"
               >
                 <span className="text-[#7C7C7C] font-semibold text-lg">Promo Code</span>
                 <div className="flex items-center gap-4">
-                  <span className="text-[#181725] font-semibold">{appliedPromo || "Pick discount"}</span>
+                  <span className="text-[#181725] font-semibold">
+                    {appliedPromo || "Pick discount"}
+                  </span>
                   <ChevronRight className="h-5 w-5 text-[#181725]" />
                 </div>
               </button>
@@ -177,8 +198,10 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
               </div>
 
               <p className="mt-6 text-[#7C7C7C] text-sm leading-relaxed text-left">
-                By placing an order you agree to our<br/>
-                <span className="font-bold text-[#181725]">Terms</span> And <span className="font-bold text-[#181725]">Conditions</span>
+                By placing an order you agree to our
+                <br />
+                <span className="font-bold text-[#181725]">Terms</span> And{" "}
+                <span className="font-bold text-[#181725]">Conditions</span>
               </p>
 
               <button
@@ -195,7 +218,10 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
         {activeSheet === "delivery" && (
           <div className="flex flex-col h-full bg-[#F2F3F2] rounded-t-[30px] overflow-hidden">
             <div className="flex items-center gap-4 p-6 border-b border-[#E2E2E2]/50 shrink-0">
-              <button onClick={() => setActiveSheet("main")} className="p-1 -ml-1 transition active:scale-90">
+              <button
+                onClick={() => setActiveSheet("main")}
+                className="p-1 -ml-1 transition active:scale-90"
+              >
                 <ChevronLeft className="h-6 w-6 text-[#181725]" />
               </button>
               <h2 className="text-2xl font-bold text-[#181725]">Delivery Method</h2>
@@ -204,7 +230,10 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
               {DELIVERY_METHODS.map((method) => (
                 <button
                   key={method.id}
-                  onClick={() => { setDeliveryMethod(method.id); setActiveSheet("main"); }}
+                  onClick={() => {
+                    setDeliveryMethod(method.id);
+                    setActiveSheet("main");
+                  }}
                   className={`w-full flex items-center justify-between p-4 rounded-xl border bg-white transition active:scale-95 ${deliveryMethod === method.id ? "border-[#53B175]" : "border-transparent"}`}
                 >
                   <div className="flex flex-col items-start gap-1">
@@ -223,7 +252,10 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
         {activeSheet === "payment" && (
           <div className="flex flex-col h-full bg-[#F2F3F2] rounded-t-[30px] overflow-hidden">
             <div className="flex items-center gap-4 p-6 border-b border-[#E2E2E2]/50 shrink-0">
-              <button onClick={() => setActiveSheet("main")} className="p-1 -ml-1 transition active:scale-90">
+              <button
+                onClick={() => setActiveSheet("main")}
+                className="p-1 -ml-1 transition active:scale-90"
+              >
                 <ChevronLeft className="h-6 w-6 text-[#181725]" />
               </button>
               <h2 className="text-2xl font-bold text-[#181725]">Payment Method</h2>
@@ -232,11 +264,18 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
               {PAYMENT_METHODS.map((method) => (
                 <button
                   key={method.id}
-                  onClick={() => { setPaymentMethod(method.id); setActiveSheet("main"); }}
+                  onClick={() => {
+                    setPaymentMethod(method.id);
+                    setActiveSheet("main");
+                  }}
                   className={`w-full flex items-center gap-4 p-4 rounded-xl border bg-white transition active:scale-95 ${paymentMethod === method.id ? "border-[#53B175]" : "border-transparent"}`}
                 >
-                  <div className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === method.id ? "border-[#53B175]" : "border-[#E2E2E2]"}`}>
-                     {paymentMethod === method.id && <div className="h-2.5 w-2.5 rounded-full bg-[#53B175]" />}
+                  <div
+                    className={`h-5 w-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === method.id ? "border-[#53B175]" : "border-[#E2E2E2]"}`}
+                  >
+                    {paymentMethod === method.id && (
+                      <div className="h-2.5 w-2.5 rounded-full bg-[#53B175]" />
+                    )}
                   </div>
                   <span className="font-bold text-[#181725]">{method.name}</span>
                 </button>
@@ -248,7 +287,10 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
         {activeSheet === "promo" && (
           <div className="flex flex-col h-full bg-[#F2F3F2] rounded-t-[30px] overflow-hidden">
             <div className="flex items-center gap-4 p-6 border-b border-[#E2E2E2]/50 shrink-0">
-              <button onClick={() => setActiveSheet("main")} className="p-1 -ml-1 transition active:scale-90">
+              <button
+                onClick={() => setActiveSheet("main")}
+                className="p-1 -ml-1 transition active:scale-90"
+              >
                 <ChevronLeft className="h-6 w-6 text-[#181725]" />
               </button>
               <h2 className="text-2xl font-bold text-[#181725]">Promo Code</h2>

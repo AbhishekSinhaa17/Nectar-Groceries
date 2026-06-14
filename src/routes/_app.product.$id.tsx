@@ -83,7 +83,6 @@ function ProductDetail() {
             <div className="flex h-64 items-center justify-center px-6 lg:h-96">
               <img src={product.image} alt={product.name} className="max-h-full object-contain" />
             </div>
-
           </div>
 
           <div className="px-6 pt-6 lg:pt-0">

@@ -65,7 +65,9 @@ function Cart() {
                           <p className="truncate font-semibold text-[#181725] lg:text-lg">
                             {product.name}
                           </p>
-                          <p className="text-xs lg:text-sm text-[#7C7C7C]">{product.weight}, Price</p>
+                          <p className="text-xs lg:text-sm text-[#7C7C7C]">
+                            {product.weight}, Price
+                          </p>
                         </div>
                         <button
                           onClick={() => removeItem(product.id)}

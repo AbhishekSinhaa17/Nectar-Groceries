@@ -21,11 +21,11 @@ function Orders() {
   const navigate = useNavigate();
   const { orderHistory } = useOrderStore();
   const isPageLoading = useDelayedLoading();
-  
+
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
-    setExpandedOrderId(prev => prev === id ? null : id);
+    setExpandedOrderId((prev) => (prev === id ? null : id));
   };
 
   const getStatusColor = (status: OrderStatus) => {
@@ -104,23 +104,35 @@ function Orders() {
                       <p className="font-bold text-[#53B175]">{formatPrice(order.total)}</p>
                     </div>
                     <button className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F2F3F2] text-[#181725] transition hover:bg-[#E2E2E2] active:scale-95">
-                      <ChevronRight className={`h-5 w-5 transition-transform ${expandedOrderId === order.id ? 'rotate-90' : ''}`} />
+                      <ChevronRight
+                        className={`h-5 w-5 transition-transform ${expandedOrderId === order.id ? "rotate-90" : ""}`}
+                      />
                     </button>
                   </div>
-                  
+
                   {expandedOrderId === order.id && (
                     <div className="mt-4 pt-4 border-t border-[#E2E2E2] space-y-3 animate-in fade-in slide-in-from-top-2">
-                       <h4 className="font-semibold text-[#181725] text-sm mb-2">Order Items</h4>
-                       {order.items.map((item, idx) => (
-                         <div key={idx} className="flex items-center gap-3">
-                           <img src={item.product.image} alt={item.product.name} className="w-12 h-12 object-contain rounded bg-gray-50 shrink-0" />
-                           <div className="flex-1 min-w-0">
-                             <p className="text-sm font-semibold text-[#181725] truncate">{item.product.name}</p>
-                             <p className="text-xs text-[#7C7C7C]">{item.quantity} x {formatPrice(item.product.price)}</p>
-                           </div>
-                           <p className="text-sm font-bold text-[#181725]">{formatPrice(item.quantity * item.product.price)}</p>
-                         </div>
-                       ))}
+                      <h4 className="font-semibold text-[#181725] text-sm mb-2">Order Items</h4>
+                      {order.items.map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-3">
+                          <img
+                            src={item.product.image}
+                            alt={item.product.name}
+                            className="w-12 h-12 object-contain rounded bg-gray-50 shrink-0"
+                          />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-[#181725] truncate">
+                              {item.product.name}
+                            </p>
+                            <p className="text-xs text-[#7C7C7C]">
+                              {item.quantity} x {formatPrice(item.product.price)}
+                            </p>
+                          </div>
+                          <p className="text-sm font-bold text-[#181725]">
+                            {formatPrice(item.quantity * item.product.price)}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -156,7 +168,9 @@ function Orders() {
                       <tr className="transition hover:bg-gray-50/50">
                         <td className="p-4 font-bold text-[#181725]">{order.id}</td>
                         <td className="p-4 text-[#7C7C7C]">{date}</td>
-                        <td className="p-4 text-center font-semibold text-[#181725]">{itemCount}</td>
+                        <td className="p-4 text-center font-semibold text-[#181725]">
+                          {itemCount}
+                        </td>
                         <td className="p-4 font-bold text-[#53B175]">{formatPrice(order.total)}</td>
                         <td className="p-4">
                           <span
@@ -166,7 +180,10 @@ function Orders() {
                           </span>
                         </td>
                         <td className="p-4 text-right">
-                          <button onClick={() => toggleExpand(order.id)} className="text-sm font-semibold text-[#53B175] hover:underline">
+                          <button
+                            onClick={() => toggleExpand(order.id)}
+                            className="text-sm font-semibold text-[#53B175] hover:underline"
+                          >
                             {expandedOrderId === order.id ? "Hide Details" : "View Details"}
                           </button>
                         </td>
@@ -175,15 +192,30 @@ function Orders() {
                         <tr className="bg-gray-50/30">
                           <td colSpan={6} className="p-4 border-t-0">
                             <div className="space-y-3 max-w-2xl animate-in fade-in slide-in-from-top-2">
-                              <h4 className="font-semibold text-[#181725] text-sm mb-2 border-b border-[#E2E2E2] pb-2">Order Items</h4>
+                              <h4 className="font-semibold text-[#181725] text-sm mb-2 border-b border-[#E2E2E2] pb-2">
+                                Order Items
+                              </h4>
                               {order.items.map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-4 py-2 border-b border-[#E2E2E2]/50 last:border-0">
-                                  <img src={item.product.image} alt={item.product.name} className="w-14 h-14 object-contain rounded bg-white border border-[#E2E2E2] shrink-0" />
+                                <div
+                                  key={idx}
+                                  className="flex items-center gap-4 py-2 border-b border-[#E2E2E2]/50 last:border-0"
+                                >
+                                  <img
+                                    src={item.product.image}
+                                    alt={item.product.name}
+                                    className="w-14 h-14 object-contain rounded bg-white border border-[#E2E2E2] shrink-0"
+                                  />
                                   <div className="flex-1 min-w-0">
-                                    <p className="font-semibold text-[#181725] truncate">{item.product.name}</p>
-                                    <p className="text-sm text-[#7C7C7C]">{item.quantity} x {formatPrice(item.product.price)}</p>
+                                    <p className="font-semibold text-[#181725] truncate">
+                                      {item.product.name}
+                                    </p>
+                                    <p className="text-sm text-[#7C7C7C]">
+                                      {item.quantity} x {formatPrice(item.product.price)}
+                                    </p>
                                   </div>
-                                  <p className="font-bold text-[#181725]">{formatPrice(item.quantity * item.product.price)}</p>
+                                  <p className="font-bold text-[#181725]">
+                                    {formatPrice(item.quantity * item.product.price)}
+                                  </p>
                                 </div>
                               ))}
                             </div>
