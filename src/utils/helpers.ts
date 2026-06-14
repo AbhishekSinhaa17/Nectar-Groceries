@@ -1,6 +1,6 @@
 export const formatPrice = (n: number): string => `$${n.toFixed(2)}`;
 
-export const delay = <T>(value: T, ms = 300): Promise<T> =>
+export const delay = <T>(value: T, ms = 0): Promise<T> =>
   new Promise((resolve) => setTimeout(() => resolve(value), ms));
 
 export const slugify = (s: string): string =>
