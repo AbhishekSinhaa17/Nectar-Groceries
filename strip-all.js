@@ -14,10 +14,7 @@ function processDirectory(dir) {
     } else if (fullPath.match(/\.(ts|tsx|js|jsx)$/)) {
       const content = fs.readFileSync(fullPath, "utf8");
 
-      // Strip comments
       let stripped = strip(content);
-
-      // Remove multiple empty lines that might be left after removing comments
       stripped = stripped.replace(/\n\s*\n/g, "\n\n");
 
       if (content !== stripped) {
