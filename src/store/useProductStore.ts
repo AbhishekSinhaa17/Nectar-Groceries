@@ -33,10 +33,6 @@ export const useProductStore = create<ProductState>((set, get) => ({
   fetchProducts: async () => {
     set({ isLoading: true, error: null });
     try {
-
-      if (Math.random() < 0.1) {
-        throw new Error("Network connection failed. Please try again.");
-      }
       const data = await delay(PRODUCTS, 1000);
       set({ products: data, isLoading: false });
     } catch (err) {
