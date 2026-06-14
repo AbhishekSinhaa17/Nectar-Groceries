@@ -209,7 +209,7 @@ function CategoryListing() {
       </div>
 
       {showFilter && (
-        <div className="fixed inset-0 bottom-[72px] z-[999] bg-white">
+        <div className="fixed inset-0 z-[999] bg-white flex flex-col pb-[env(safe-area-inset-bottom)]">
           <div className="flex items-center justify-center relative px-5 py-4 border-b border-[#E2E2E2]">
             <button onClick={() => setShowFilter(false)} className="absolute left-5 bg-transparent border-none cursor-pointer p-1">
               <X className="h-5 w-5 text-[#181725]" />
