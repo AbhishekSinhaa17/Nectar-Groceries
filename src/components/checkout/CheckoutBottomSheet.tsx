@@ -137,7 +137,7 @@ export function CheckoutBottomSheet({ isOpen, onClose }: CheckoutBottomSheetProp
               >
                 <span className="text-[#7C7C7C] font-semibold text-lg">Delivery</span>
                 <div className="flex items-center gap-4">
-                  <span className="text-[#181725] font-semibold">{selectedDelivery.name === "Standard Delivery" ? "Select Method" : selectedDelivery.name}</span>
+                  <span className="text-[#181725] font-semibold">{selectedDelivery.name}</span>
                   <ChevronRight className="h-5 w-5 text-[#181725]" />
                 </div>
               </button>
