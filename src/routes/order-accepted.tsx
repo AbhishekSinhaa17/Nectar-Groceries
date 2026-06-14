@@ -26,7 +26,7 @@ function OrderAccepted() {
 
   return (
     <div className="min-h-screen bg-[#F2F3F2] lg:py-12 lg:px-4 flex flex-col justify-center">
-      <div className="relative flex min-h-[100dvh] flex-col items-center overflow-hidden bg-white px-6 pb-12 pt-20 lg:px-8 lg:max-w-md lg:mx-auto lg:w-full lg:h-[90vh] lg:max-h-[800px] lg:min-h-[650px] lg:py-8 lg:rounded-[30px] lg:shadow-2xl">
+      <div className="relative flex min-h-[100dvh] flex-col items-center overflow-hidden bg-white px-6 pb-12 pt-20 lg:px-8 lg:max-w-md lg:mx-auto lg:w-full lg:h-[800px] lg:min-h-0 lg:rounded-[30px] lg:shadow-2xl">
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-[#F3F4F6] blur-3xl mix-blend-multiply opacity-70" />
         <div className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[#FCE7F3] blur-3xl mix-blend-multiply opacity-50" />
