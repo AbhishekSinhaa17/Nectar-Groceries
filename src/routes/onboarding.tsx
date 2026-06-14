@@ -12,12 +12,14 @@ export const Route = createFileRoute("/onboarding")({
 
 function Onboarding() {
   return (
-    <Link to="/signin" className="animate-page-in relative block min-h-screen bg-black">
+    <div className="min-h-screen bg-[#F2F3F2] lg:py-12 lg:px-4 flex flex-col justify-center">
+      <Link to="/signin" className="animate-page-in relative block min-h-screen bg-black lg:max-w-md lg:mx-auto lg:w-full lg:h-[800px] lg:min-h-0 lg:rounded-[30px] lg:overflow-hidden lg:shadow-2xl">
       <img
         src="/images/onboarding_bg.png"
         alt="Fresh groceries delivery"
         className="absolute inset-0 h-full w-full object-cover"
       />
-    </Link>
+      </Link>
+    </div>
   );
 }

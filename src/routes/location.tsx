@@ -27,7 +27,8 @@ function Location() {
   };
 
   return (
-    <div className="animate-page-in min-h-screen bg-white pb-12 relative flex flex-col">
+    <div className="min-h-screen bg-[#F2F3F2] lg:py-12 lg:px-4 flex flex-col justify-center">
+      <div className="animate-page-in min-h-screen bg-white pb-12 relative flex flex-col lg:max-w-md lg:mx-auto lg:w-full lg:h-[800px] lg:min-h-0 lg:rounded-[30px] lg:overflow-hidden lg:shadow-2xl">
             <div className="absolute top-0 w-full h-[350px] overflow-hidden pointer-events-none">
         <img src="/images/auth_bg.png" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply" alt="" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
@@ -79,6 +80,7 @@ function Location() {
         >
           Submit
         </button>
+      </div>
       </div>
     </div>
   );
