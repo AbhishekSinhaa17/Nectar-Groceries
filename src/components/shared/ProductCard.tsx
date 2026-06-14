@@ -25,9 +25,9 @@ export function ProductCard({ product }: Props) {
     <Link
       to="/product/$id"
       params={{ id: product.id }}
-      className="block rounded-2xl border border-[#E2E2E2] bg-white p-4 transition active:scale-95"
+      className="flex flex-col h-full rounded-2xl border border-[#E2E2E2] bg-white p-4 transition active:scale-95"
     >
-      <div className="flex h-28 items-center justify-center">
+      <div className="flex h-28 items-center justify-center shrink-0">
         <img
           src={product.image}
           alt={product.name}
@@ -35,11 +35,11 @@ export function ProductCard({ product }: Props) {
           loading="lazy"
         />
       </div>
-      <div className="mt-3">
+      <div className="mt-3 flex-1">
         <h3 className="line-clamp-2 text-base font-bold text-[#181725] tracking-tight">{product.name}</h3>
-        <p className="mt-1 text-sm text-[#7C7C7C]">{product.weight}, Priceg</p>
+        <p className="mt-1 text-sm text-[#7C7C7C]">{product.weight}, Price</p>
       </div>
-      <div className="mt-5 flex items-center justify-between">
+      <div className="mt-auto pt-4 flex items-center justify-between">
         <span className="text-lg font-bold text-[#181725]">{formatPrice(product.price)}</span>
         <button
           onClick={handleAdd}
