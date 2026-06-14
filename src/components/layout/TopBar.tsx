@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Search, Heart, ShoppingCart, MapPin } from "lucide-react";
+import { Search, Heart, ShoppingCart, MapPin, User } from "lucide-react";
 import { useCartStore } from "@/store/useCartStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useEffect, useState } from "react";
@@ -50,6 +50,9 @@ export function TopBar() {
                 {count}
               </span>
             )}
+          </Link>
+          <Link to="/account" aria-label="Account">
+            <User className="h-5 w-5 text-[#181725]" />
           </Link>
         </div>
       </div>

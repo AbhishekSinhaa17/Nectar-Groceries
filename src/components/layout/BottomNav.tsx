@@ -29,10 +29,10 @@ export function BottomNav() {
           const active = pathname === tab.to || (tab.to === "/home" && pathname === "/home");
           const Icon = tab.icon;
           return (
-            <li key={tab.to}>
+            <li key={tab.to} className="flex-1">
               <Link
                 to={tab.to}
-                className={`relative flex flex-col items-center gap-1 px-3 py-1.5 text-xs ${active ? "text-[#53B175]" : "text-[#181725]"}`}
+                className={`relative w-full flex flex-col items-center gap-1 py-1.5 text-[10px] sm:text-xs ${active ? "text-[#53B175]" : "text-[#181725]"}`}
               >
                 <span className="relative">
                   <Icon className={`h-6 w-6 ${active ? "stroke-[#53B175]" : ""}`} />
