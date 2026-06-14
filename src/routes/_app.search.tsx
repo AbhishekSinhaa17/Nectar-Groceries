@@ -3,10 +3,12 @@ import { Search as SearchIcon, SlidersHorizontal, X, Clock, TrendingUp } from "l
 import { useEffect, useMemo, useState } from "react";
 import { useProductStore } from "@/store/useProductStore";
 import { useSearchStore } from "@/store/useSearchStore";
+import { useFilterStore } from "@/store/useFilterStore";
 import { ProductCard } from "@/components/shared/ProductCard";
 import { SearchSkeleton } from "@/components/shared/Skeletons";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { ErrorState } from "@/components/shared/ErrorState";
+import { MobileFilterModal } from "@/components/shared/MobileFilterModal";
 import { useDebounce } from "@/hooks/useDebounce";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,9 +27,11 @@ const TRENDING_SEARCHES = ["Organic Bananas", "Fresh Milk", "Whole Wheat Bread",
 function SearchPage() {
   const { products, isLoading, error, fetchProducts } = useProductStore();
   const { recentSearches, addRecentSearch, clearRecentSearches } = useSearchStore();
+  const { selectedCategories, selectedBrands } = useFilterStore();
 
   const [input, setInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
   const debouncedQuery = useDebounce(input, 500);
 
   const isSearching = input !== debouncedQuery; // True while waiting for debounce
@@ -44,8 +48,13 @@ function SearchPage() {
 
   const results = useMemo(() => {
     if (!debouncedQuery.trim()) return [];
-    return products.filter((p) => p.name.toLowerCase().includes(debouncedQuery.toLowerCase()));
-  }, [products, debouncedQuery]);
+    return products.filter((p) => {
+      if (!p.name.toLowerCase().includes(debouncedQuery.toLowerCase())) return false;
+      if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) return false;
+      if (selectedBrands.length > 0 && (!p.brand || !selectedBrands.includes(p.brand))) return false;
+      return true;
+    });
+  }, [products, debouncedQuery, selectedCategories, selectedBrands]);
 
   const suggestions = useMemo(() => {
     if (!input.trim() || input === debouncedQuery) return [];
@@ -61,7 +70,8 @@ function SearchPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pt-6 lg:px-8 pb-24">
+    <>
+      <div className="mx-auto max-w-7xl px-4 pt-6 lg:px-8 pb-24">
       <div className="flex items-center gap-3 relative z-20">
         <div className="flex h-14 flex-1 items-center gap-2 rounded-2xl bg-[#F2F3F2] px-4 border border-transparent focus-within:border-[#53B175] transition-colors shadow-sm">
           <SearchIcon className="h-5 w-5 text-[#181725]" />
@@ -87,6 +97,7 @@ function SearchPage() {
           )}
         </div>
         <button
+          onClick={() => setShowFilter(true)}
           aria-label="Filter"
           className="grid h-14 w-14 place-items-center rounded-2xl bg-[#F2F3F2] hover:bg-[#E2E2E2] transition shadow-sm"
         >
@@ -205,6 +216,9 @@ function SearchPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+      </div>
+
+      <MobileFilterModal isOpen={showFilter} onClose={() => setShowFilter(false)} />
+    </>
   );
 }
