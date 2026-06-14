@@ -125,86 +125,88 @@ function CategoryListing() {
   }, [selectedCategories, selectedBrands, minPrice, maxPrice, minRating, inStockOnly, removeFilter]);
 
   return (
-    <div className="animate-page-in mx-auto max-w-7xl px-4 pt-6 lg:flex lg:gap-8 lg:px-8 pb-24 lg:pb-12">
-      <aside className="hidden w-72 shrink-0 lg:block">
-        <div className="sticky top-24">
-          <FilterPanel
-            categories={CATEGORIES.map((c) => ({ label: c.name, value: c.name }))}
-            selectedCategories={selectedCategories}
-            toggleCategory={toggleCategory}
-            brands={FILTER_BRANDS}
-            selectedBrands={selectedBrands}
-            toggleBrand={toggleBrand}
-          />
-        </div>
-      </aside>
+    <>
+      <div className="animate-page-in mx-auto max-w-7xl px-4 pt-6 lg:flex lg:gap-8 lg:px-8 pb-24 lg:pb-12">
+        <aside className="hidden w-72 shrink-0 lg:block">
+          <div className="sticky top-24">
+            <FilterPanel
+              categories={CATEGORIES.map((c) => ({ label: c.name, value: c.name }))}
+              selectedCategories={selectedCategories}
+              toggleCategory={toggleCategory}
+              brands={FILTER_BRANDS}
+              selectedBrands={selectedBrands}
+              toggleBrand={toggleBrand}
+            />
+          </div>
+        </aside>
 
-      <div className="flex-1">
-        <div className="relative flex items-center justify-center min-h-[40px]">
-          <button
-            onClick={() => navigate({ to: "/explore" })}
-            aria-label="Back"
-            className="absolute left-0 rounded-full p-2 hover:bg-[#F2F3F2] transition"
-          >
-            <ArrowLeft className="h-6 w-6 text-[#181725]" />
-          </button>
-          <h1 className="text-xl font-bold text-[#181725] capitalize text-center">{unslugify(name)}</h1>
-          <button
-            onClick={() => setShowFilter(true)}
-            aria-label="Filters"
-            className="absolute right-0 lg:hidden rounded-full p-2 hover:bg-[#F2F3F2] transition"
-          >
-            <SlidersHorizontal className="h-6 w-6 text-[#181725]" />
-          </button>
-        </div>
-
-        {activeChips.length > 0 && (
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            <span className="text-sm font-medium text-[#7C7C7C]">Active Filters:</span>
-            {activeChips.map((chip, idx) => (
-              <span
-                key={idx}
-                className="flex items-center gap-1 rounded-full bg-[#53B175]/10 px-3 py-1.5 text-sm font-semibold text-[#53B175] border border-[#53B175]/20"
-              >
-                {chip.label}
-                <button onClick={chip.onRemove} className="ml-1 hover:text-red-500 transition">
-                  <X className="h-3.5 w-3.5" />
-                </button>
-              </span>
-            ))}
+        <div className="flex-1">
+          <div className="relative flex items-center justify-center min-h-[40px]">
             <button
-              onClick={resetFilters}
-              className="text-sm font-semibold text-[#181725] underline ml-2"
+              onClick={() => navigate({ to: "/explore" })}
+              aria-label="Back"
+              className="absolute left-0 rounded-full p-2 hover:bg-[#F2F3F2] transition"
             >
-              Clear All
+              <ArrowLeft className="h-6 w-6 text-[#181725]" />
+            </button>
+            <h1 className="text-xl font-bold text-[#181725] capitalize text-center">{unslugify(name)}</h1>
+            <button
+              onClick={() => setShowFilter(true)}
+              aria-label="Filters"
+              className="absolute right-0 lg:hidden rounded-full p-2 hover:bg-[#F2F3F2] transition"
+            >
+              <SlidersHorizontal className="h-6 w-6 text-[#181725]" />
             </button>
           </div>
-        )}
 
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {isLoading ? (
-            Array.from({ length: 10 }).map((_, i) => <ProductCardSkeleton key={i} />)
-          ) : error ? (
-            <div className="col-span-full">
-              <ErrorState
-                title="Failed to load products"
-                description={error}
-                onRetry={fetchProducts}
-              />
+          {activeChips.length > 0 && (
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <span className="text-sm font-medium text-[#7C7C7C]">Active Filters:</span>
+              {activeChips.map((chip, idx) => (
+                <span
+                  key={idx}
+                  className="flex items-center gap-1 rounded-full bg-[#53B175]/10 px-3 py-1.5 text-sm font-semibold text-[#53B175] border border-[#53B175]/20"
+                >
+                  {chip.label}
+                  <button onClick={chip.onRemove} className="ml-1 hover:text-red-500 transition">
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                </span>
+              ))}
+              <button
+                onClick={resetFilters}
+                className="text-sm font-semibold text-[#181725] underline ml-2"
+              >
+                Clear All
+              </button>
             </div>
-          ) : filtered.length === 0 ? (
-            <div className="col-span-full">
-              <EmptyState
-                title="No products match your filters"
-                description="Try adjusting your search or clearing filters."
-                icon={<Search className="h-10 w-10" />}
-                actionLabel="Clear Filters"
-                onAction={resetFilters}
-              />
-            </div>
-          ) : (
-            filtered.map((p) => <ProductCard key={p.id} product={p} />)
           )}
+
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {isLoading ? (
+              Array.from({ length: 10 }).map((_, i) => <ProductCardSkeleton key={i} />)
+            ) : error ? (
+              <div className="col-span-full">
+                <ErrorState
+                  title="Failed to load products"
+                  description={error}
+                  onRetry={fetchProducts}
+                />
+              </div>
+            ) : filtered.length === 0 ? (
+              <div className="col-span-full">
+                <EmptyState
+                  title="No products match your filters"
+                  description="Try adjusting your search or clearing filters."
+                  icon={<Search className="h-10 w-10" />}
+                  actionLabel="Clear Filters"
+                  onAction={resetFilters}
+                />
+              </div>
+            ) : (
+              filtered.map((p) => <ProductCard key={p.id} product={p} />)
+            )}
+          </div>
         </div>
       </div>
 
@@ -257,7 +259,7 @@ function CategoryListing() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
