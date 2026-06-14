@@ -66,7 +66,7 @@ function CheckoutPage() {
   const [addressError, setAddressError] = useState("");
 
   const [toast, setToast] = useState<ToastState>(null);
-  const isPageLoading = useDelayedLoading(1000);
+  const isPageLoading = useDelayedLoading();
 
   useEffect(() => {
     if (toast) {

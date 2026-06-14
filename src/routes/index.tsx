@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
 function Splash() {
   const navigate = useNavigate();
   useEffect(() => {
-    const t = window.setTimeout(() => navigate({ to: "/onboarding" }), 2500);
+    const t = window.setTimeout(() => navigate({ to: "/onboarding" }), 1800);
     return () => window.clearTimeout(t);
   }, [navigate]);
 

@@ -34,7 +34,7 @@ function ProductDetail() {
   const { viewedItems, addViewedProduct } = useRecentlyViewedStore();
   const [qty, setQty] = useState(1);
   const [openDetail, setOpenDetail] = useState(true);
-  const isPageLoading = useDelayedLoading(1000);
+  const isPageLoading = useDelayedLoading();
 
   useEffect(() => {
     if (products.length === 0) void fetchProducts();

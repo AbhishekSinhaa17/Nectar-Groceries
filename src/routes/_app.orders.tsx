@@ -20,7 +20,7 @@ export const Route = createFileRoute("/_app/orders")({
 function Orders() {
   const navigate = useNavigate();
   const { orderHistory } = useOrderStore();
-  const isPageLoading = useDelayedLoading(1000);
+  const isPageLoading = useDelayedLoading();
   
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
 

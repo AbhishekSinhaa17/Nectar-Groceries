@@ -70,7 +70,7 @@ function Home() {
   const user = useAuthStore((s) => s.user);
   const { viewedItems } = useRecentlyViewedStore();
   const [banner, setBanner] = useState(0);
-  const isCategoryLoading = useDelayedLoading(1000);
+  const isCategoryLoading = useDelayedLoading();
 
   const [input, setInput] = useState("");
   const debouncedQuery = useDebounce(input, 500);

@@ -19,7 +19,7 @@ export const Route = createFileRoute("/_app/explore")({
 });
 
 function Explore() {
-  const isLoading = useDelayedLoading(1000);
+  const isLoading = useDelayedLoading();
 
   return (
     <div className="animate-page-in mx-auto max-w-7xl px-4 pt-6 pb-16 lg:pb-8 lg:px-8">

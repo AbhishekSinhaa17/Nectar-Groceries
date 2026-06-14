@@ -22,7 +22,7 @@ function Cart() {
   const navigate = useNavigate();
   const { items, updateQuantity, removeItem, totalPrice } = useCartStore();
   const total = totalPrice();
-  const isPageLoading = useDelayedLoading(1000);
+  const isPageLoading = useDelayedLoading();
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   return (
