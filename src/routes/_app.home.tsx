@@ -45,9 +45,9 @@ const BANNERS = [
     textColor: "text-[#181725]",
     subColor: "text-[#E6A000]",
     images: [
-      { src: "/images/mock/milk.png", className: "absolute -left-6 lg:-left-12 bottom-0 h-[120%] lg:h-[130%] object-contain drop-shadow-2xl" },
-      { src: "/images/mock/egg.png", className: "absolute left-24 lg:left-36 -top-4 h-[40%] lg:h-[50%] object-contain opacity-90 drop-shadow-xl" },
-      { src: "/images/mock/cheese.png", className: "absolute -right-4 lg:-right-8 bottom-0 h-[80%] lg:h-[100%] object-contain drop-shadow-2xl" }
+      { src: "/images/mock/milk.png", className: "absolute -left-6 lg:left-4 bottom-0 h-[120%] lg:h-[100%] object-contain drop-shadow-2xl" },
+      { src: "/images/mock/egg.png", className: "absolute left-24 lg:left-64 -top-4 h-[40%] lg:h-[45%] object-contain opacity-90 drop-shadow-xl" },
+      { src: "/images/mock/cheese.png", className: "absolute -right-4 lg:right-4 bottom-0 h-[80%] lg:h-[85%] object-contain drop-shadow-2xl" }
     ]
   },
   { 
@@ -58,9 +58,9 @@ const BANNERS = [
     textColor: "text-[#181725]",
     subColor: "text-[#0066CC]",
     images: [
-      { src: "/images/mock/drinks.png", className: "absolute -left-4 lg:-left-8 bottom-0 h-[110%] lg:h-[120%] object-contain drop-shadow-2xl" },
-      { src: "/images/mock/coke.png", className: "absolute right-12 lg:right-24 -top-8 h-[60%] lg:h-[70%] object-contain opacity-90 drop-shadow-xl rotate-12" },
-      { src: "/images/mock/sprite.png", className: "absolute -right-8 lg:-right-12 -bottom-4 h-[70%] lg:h-[90%] object-contain drop-shadow-2xl -rotate-12" }
+      { src: "/images/mock/drinks.png", className: "absolute -left-4 lg:left-8 bottom-0 h-[110%] lg:h-[100%] object-contain drop-shadow-2xl" },
+      { src: "/images/mock/coke.png", className: "absolute right-12 lg:right-64 -top-8 h-[60%] lg:h-[55%] object-contain opacity-90 drop-shadow-xl rotate-12" },
+      { src: "/images/mock/sprite.png", className: "absolute -right-8 lg:-right-2 -bottom-4 h-[70%] lg:h-[80%] object-contain drop-shadow-2xl -rotate-12" }
     ]
   },
 ];
